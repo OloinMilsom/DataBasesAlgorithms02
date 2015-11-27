@@ -3,6 +3,8 @@
 // attributed.
 // Signed: Niall Milsom (C00179300)
 
+// Wiki Page for Beggar-My-Neighbour: https://en.wikipedia.org/wiki/Beggar-My-Neighbour
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -30,7 +32,7 @@ int main(){ // the console playes beggar-my-neighbour
 	random_shuffle(deck.begin(), deck.end());
 
 	// deal
-	for (vector<Card>::iterator curr = deck.begin(); curr < deck.end(); curr+=2)
+	for (vector<Card>::iterator curr = deck.begin(); curr < deck.end(); curr += 2)
 	{
 		hand1.push_back(*curr);
 		hand2.push_back(*(curr + 1));
@@ -44,7 +46,7 @@ int main(){ // the console playes beggar-my-neighbour
 		if (pile.empty() || pile.back().getValue() < 11 && pile.back().getValue() != 1)
 		{
 			if (currHand){
-				pile.push_back(hand1.back()); 
+				pile.push_back(hand1.back());
 				cout << "p1: ";
 				hand1.back().print();
 				cout << endl;
@@ -101,7 +103,7 @@ int main(){ // the console playes beggar-my-neighbour
 						break;
 				}
 				// if a penalty card is placed, break
-				if (pile.back().getValue() > 10 && pile.back().getValue() == 1)
+				if (pile.back().getValue() > 10 || pile.back().getValue() == 1)
 				{
 					lostPlay = false;
 					break;
@@ -117,6 +119,7 @@ int main(){ // the console playes beggar-my-neighbour
 					hand2.reserve(pile.size() + temp.size());
 					hand2.insert(hand2.end(), pile.begin(), pile.end());
 					hand2.insert(hand2.end(), temp.begin(), temp.end());
+					cout << "Hand 2 won " << pile.size() << " cards" << endl;
 					pile.clear();
 				}
 				// hand2 lost play
@@ -127,6 +130,7 @@ int main(){ // the console playes beggar-my-neighbour
 					hand1.reserve(pile.size() + temp.size());
 					hand1.insert(hand1.end(), pile.begin(), pile.end());
 					hand1.insert(hand1.end(), temp.begin(), temp.end());
+					cout << "Hand 1 won " << pile.size() << " cards" << endl;
 					pile.clear();
 				}
 			}

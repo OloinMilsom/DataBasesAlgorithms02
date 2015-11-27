@@ -1,4 +1,4 @@
-#include "Card.h"
+﻿#include "Card.h"
 
 Card::Card(Suit s, int v) : suit(s), value(v){
 
@@ -17,5 +17,24 @@ void Card::print(){
 		suitStr = " of Hearts";
 	if (suit == Suit::Spades)
 		suitStr = " of Spades";
-	std::cout << value << suitStr;
+	if (value == 1)
+	{
+		std::cout << "Ace" << suitStr;
+	}
+	else if (value == 11)
+	{
+		std::cout << "Jack" << suitStr;
+	}
+	else if(value == 12)
+	{
+		std::cout << "Queen" << suitStr;
+	}
+	else if(value == 13)
+	{
+		std::cout << "King" << suitStr;
+	}
+	else
+	{
+		std::cout << value << suitStr;
+	}
 }

@@ -15,11 +15,11 @@ void printWords(vector<string> words); // prints the contents of the vector
 
 struct sortByLength { // functor for sorting strings by length
 	bool operator()(string const & first, string const & second) {
-		if (first.size() == second.size())
+		if (first.length() == second.length())
 		{
 			return first < second;
 		}
-		return first.size() < second.size();
+		return first.length() < second.length();
 	}
 };
 
@@ -32,8 +32,8 @@ struct ifLengthEquals { // functor for counting if length == specified length
 
 struct ifAlsoIn { // functor for removing elements of one vector from another
 	vector<string> vec;
-	bool operator()(string const & first) {
-		return std::find(vec.begin(), vec.end(), first) != vec.end();
+	bool operator()(string const & str) {
+		return find(vec.begin(), vec.end(), str) != vec.end();
 	}
 };
 
